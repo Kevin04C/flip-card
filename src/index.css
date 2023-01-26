@@ -2,10 +2,172 @@
   box-sizing: border-box;
 }
 html {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
   padding: 0;
   margin: 0;
+  background-color: rgb(191, 212, 246);
+}
+
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  flex: 1;
+}
+.cards-content {
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.card {
+  background-color: transparent;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  perspective: 300px;
+  cursor: pointer;
+  box-shadow: 8px 6px 0px rgba(17, 50, 99, 0.15);
+}
+
+.card.show .card-content {
+  transform: rotateY(180deg);
+}
+.card.show {
+  border: 2px solid rgba(68, 136, 238, 0.6);
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: 0.3s ease-in-out;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  background-color: #4488ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-front:hover {
+  background-color: #2375f0;
+}
+
+.card-front span {
+  font-weight: bold;
+  font-size: 4rem;
+  color: #fff;
+}
+.card-back {
+  transform: rotateY(1980deg);
+  background-color: #fff;
+}
+
+.card-back img {
+  width: 100%;
+  height: 100%;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.aside {
+  text-align: center;
+  width: 100%;
+}
+.time {
+  width: max-content;
+  margin: 0 auto;
+  background-color: rgba(150, 192, 255, 0.53);
+  padding: 16px;
+  color: #48e;
+  font-size: 2rem;
+  border-radius: 4px;
+  margin-bottom: 30px;
+}
+
+.time-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #48e;
+}
+.movements {
+  font-size: 2.5rem;
+  color: #48e;
+  margin-bottom: 30px;
+}
+.movements p span {
+  color: #000;
+  font-weight: bold;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.btn-reset {
+  background-color: #2e2e2e;
+  color: #fff;
+}
+
+.btn-empezar {
+  background-color: #48e;
+  color: #fff;
+}
+.btn-reset:hover {
+  background-color: #000;
+}
+
+@media screen and (min-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .game {
+    flex-direction: row;
+    align-items: center;
+  }
+  .aside {
+    width: 400px;
+    height: max-content;
+  }
+  .cards-content {
+    flex: 1;
+    border-radius: 25px;
+    padding: 28px 20px;
+  }
 }
